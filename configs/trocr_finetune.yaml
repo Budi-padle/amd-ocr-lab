@@ -1,0 +1,28 @@
+# TrOCR fine-tuning config
+# tested on RX 7800 XT with ROCm 6.1.2
+
+model_name: "microsoft/trocr-base-handwritten"
+dataset: "iam"  # or "custom"
+data_dir: "data/custom"  # only used if dataset=custom
+
+# training
+epochs: 3
+batch_size: 8  # 16GB VRAM can handle this with trocr-base
+learning_rate: 5.0e-5
+weight_decay: 0.01
+warmup_ratio: 0.1
+max_grad_norm: 1.0
+
+# image settings
+image_height: 384
+image_width: 384
+max_target_length: 128
+
+# output
+output_dir: "outputs/trocr"
+save_every_epoch: true
+eval_steps: 500
+
+# ROCm specific
+# set HSA_OVERRIDE_GFX_VERSION=11.0.0 for RX 7800 XT
+# if you get MIOpen errors, try: MIOPEN_FIND_MODE=3
