@@ -1,0 +1,30 @@
+# PaddleOCR config
+# note: PaddlePaddle ROCm support is experimental
+# for now I'm using CPU mode with PaddleOCR
+
+# language
+lang: "en"
+# options: en, ch, japan, korean, french, german, etc.
+
+# models
+det_model: null  # use default, or path to custom det model
+rec_model: null  # use default, or path to custom rec model
+cls_model: null  # text direction classifier
+
+# inference settings
+use_gpu: false  # set true if you have paddle-rocm build
+use_angle_cls: true
+det_db_thresh: 0.3
+det_db_box_thresh: 0.5
+det_db_unclip_ratio: 1.6
+rec_batch_num: 6
+max_text_length: 250
+
+# custom models (for fine-tuned models)
+# det_model_dir: "outputs/paddle_det/best_accuracy"
+# rec_model_dir: "outputs/paddle_rec/best_accuracy"
+
+# multi-language
+# for Chinese: lang="ch"
+# for Japanese: lang="japan"
+# for Korean: lang="korean"
