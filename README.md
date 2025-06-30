@@ -42,36 +42,13 @@ python scripts/benchmark_ocr.py --dataset path/to/test/images
 
 ## Hardware
 
-- AMD RX 7800 XT (16GB VRAM)
-- ROCm 6.1.2
-- Ubuntu 24.04
+Primary test target: AMD RX 7800 XT (ROCm 6.1.2). Some tests also run on CPU for baseline comparison.
 
 ## Status
 
 TrOCR fine-tuning works, getting ~92% character accuracy on IAM after 3 epochs. PaddleOCR is faster but less customizable. Table extraction is still WIP, the model converges but results are messy on real-world scans.
 
 Multi-language support is next — want to try Chinese and Japanese OCR.
-
-## Why AMD / ROCm
-
-Document AI and OCR pipelines process millions of pages daily in enterprise settings. Running these workloads on AMD GPUs using ROCm offers a viable alternative to the NVIDIA-dominated stack, especially for batch processing where cost-per-page matters more than raw latency. Target hardware:
-
-- AMD MI300X / MI250X for datacenter OCR processing
-- RX 7900 XTX / RX 7800 XT for development and prototyping
-- ROCm 6.x with PyTorch ROCm builds
-- OCR workloads are compute-bound on the recognition models — GPU acceleration provides the biggest gains here
-- PaddleOCR has existing ROCm-compatible builds, making it a natural fit for AMD hardware
-
-## AMD GPU Credit Use Plan
-
-If granted AMD GPU access, I plan to:
-
-1. Validate the full OCR pipeline (detection → recognition → table extraction) on ROCm-compatible GPUs
-2. Compare CPU vs AMD GPU inference latency for TrOCR and PaddleOCR across different document types
-3. Test fp16 vs fp32 accuracy on OCR output — character accuracy regression is the key metric
-4. Profile VRAM usage for batch processing (pages 1–16) to find optimal batch sizes
-5. Document ROCm-specific setup issues, workarounds, and PaddlePaddle ROCm integration notes
-6. Publish benchmark results and ROCm compatibility matrix back to this repository
 
 ## License
 
