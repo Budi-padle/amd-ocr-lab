@@ -43,3 +43,8 @@ python ocr_lab.py receipt scan receipt.jpg --output parsed.json
 
 - `examples/indonesian_receipt_sample.md` — parsing an Indomaret receipt
 - `examples/form_table_output.md` — extracting a table from a scanned form
+
+
+## Troubleshooting
+**Q: Getting OOM errors?**
+A: Reduce batch size or enable gradient checkpointing.
