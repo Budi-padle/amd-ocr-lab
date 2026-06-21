@@ -1,2 +1,1 @@
-# Config for ocr
-# New: Add configuration file support
+# Config - Add config option for ocr pipeline
