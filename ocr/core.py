@@ -1,1 +1,1 @@
-# Core module - fixed: Fix race condition in parallel processing
+# Core module - fixed: Fix edge case in document-ai processing
